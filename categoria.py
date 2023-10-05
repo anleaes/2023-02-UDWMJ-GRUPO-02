@@ -3,3 +3,6 @@ class categoria:
         self.id = id
         self.nome = nome 
         self.descricao = descricao
+    def nome(self):
+        return self.nome    
+
