@@ -5,3 +5,6 @@ class Produto:
         self.data_fabricacao = data_fabricacao
         self.e_ativo = e_ativo
         self.categoria = categoria
+    
+    def verificarData(self):
+        return self.data_fabricacao
