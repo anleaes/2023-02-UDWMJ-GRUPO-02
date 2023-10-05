@@ -3,3 +3,5 @@ class pedido:
         self.preco_total = preco_total
         self.status = status
         self.cliente = cliente
+    def status(self):
+        return self.status    
