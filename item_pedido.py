@@ -4,3 +4,6 @@ class Item_pedido:
         self.preco_unidade = preco_unidade
         self.pedido = pedido
         self.produto = produto
+
+    def verificarPedido(self):
+        return self.pedido
