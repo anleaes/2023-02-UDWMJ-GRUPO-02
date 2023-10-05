@@ -4,4 +4,4 @@ class Pedido:
         self.status = status
         self.cliente = cliente
     def status(self):
-        return self.status    
+        return self.status
