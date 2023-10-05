@@ -6,3 +6,5 @@ class Cliente:
         self.telefone = telefone
         self.email = email
         self.genero = genero
+    def email(self):
+        return self.email 
