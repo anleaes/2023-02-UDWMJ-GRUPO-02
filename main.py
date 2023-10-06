@@ -15,9 +15,9 @@ def main():
     cat = Categoria(123, 'Chá','Chás de todos os sabores')
     clrs = Cliente_rede_social('Luigi','luigivibias11@gmail.com')
     rs = Rede_social('e-mail', 'luigivibias11@gmail.com')
-    print(cat.nome())
-    print(clrs.cliente())
-    print(rs.descricao())
+    print(cat.verificarNome())
+    print(clrs.verificarCliente())
+    print(rs.verificarDescricao())
     
     C1 = Cliente('Luigi', 'veloso',  'Rua manoel', '51 9999 9999', 'luigi_vava@hotmail.com', 'M')
     pd1 = Pedido(16.00, 'ativo', 'Luigi')

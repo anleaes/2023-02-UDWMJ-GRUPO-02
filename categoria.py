@@ -3,6 +3,6 @@ class Categoria:
         self.id = id
         self.nome = nome 
         self.descricao = descricao
-    def nome(self):
+    def verificarNome(self):
         return self.nome    
 
