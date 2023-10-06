@@ -1,9 +1,10 @@
+from cliente import Cliente
+from pedido import Pedido
 from item_pedido import Item_pedido
 from produto import Produto
 from categoria import Categoria
 from cliente_rede_social import Cliente_rede_social
 from rede_social import Rede_social
-
 
 def main():
     itp1 = Item_pedido(100, 16.00, 'Erva', 'Erva mate')
@@ -17,7 +18,11 @@ def main():
     print(cat.nome())
     print(clrs.cliente())
     print(rs.descricao())
-
+    
+    C1 = Cliente('Luigi', 'veloso',  'Rua manoel', '51 9999 9999', 'luigi_vava@hotmail.com', 'M')
+    pd1 = Pedido(16.00, 'ativo', 'Luigi')
+    print(C1.email())
+    print(pd1.status())
 
 if __name__ == "__main__":
     main()
