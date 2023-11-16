@@ -38,6 +38,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
+    'clients.apps.ClientsConfig',
+    'products.apps.ProductsConfig',
     'socialnetworks.apps.SocialnetworksConfig',
     'categories.apps.CategoriesConfig',
     'core.apps.CoreConfig',
