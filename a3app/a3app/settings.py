@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'socialnetworks.apps.SocialnetworksConfig',
     'categories.apps.CategoriesConfig',
     'core.apps.CoreConfig',
     'widget_tweaks',
