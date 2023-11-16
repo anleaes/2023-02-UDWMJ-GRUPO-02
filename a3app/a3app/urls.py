@@ -24,6 +24,7 @@ urlpatterns = [
     path('',include('core.urls', namespace='core')),
     path('categorias/',include('categories.urls', namespace='categories')),
     path('redessociais/',include('socialnetworks.urls', namespace='socialnetworks')),
+    path('pedidos/', include('orders.urls', namespace='orders')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
