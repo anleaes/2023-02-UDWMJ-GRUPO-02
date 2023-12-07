@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'medico.apps.MedicoConfig',
     'prescricao.apps.PrescricaoConfig',
     'consulta.apps.ConsultaConfig',
+    'paciente.apps.PacienteConfig',
 ]
 
 MIDDLEWARE = [
