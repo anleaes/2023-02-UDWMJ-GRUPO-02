@@ -6,12 +6,12 @@ class Consulta(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     address = models.CharField('Endereco', max_length=200)
-    cell_phone = models.CharField('Telefone celular', max_length=20)
+    cell_phone = models.CharField('Telefone', max_length=20)
     TURNO_CHOICES = (
-        ('Manha'),
-        ('Tarde'),
+        ('M', 'Manha'),
+        ('T', 'Tarde'),
     )
-    turno = models.CharField('Turno', max_length=5, choices=TURNO_CHOICES)
+    turno = models.CharField('Turno', max_length=1, choices=TURNO_CHOICES)
     hora = models.CharField('Hora', max_length=6)
 
     class Meta:
