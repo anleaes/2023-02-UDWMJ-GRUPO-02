@@ -1,19 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PrescricaoForm
-from .models import Prescricao, Medico
+from .models import Prescricao
 
 # Create your views here.
-def add_prescricao(request, id_medico):
+def add_prescricao(request):
     template_name = 'prescricao/add_prescricao.html'
     context = {}
     if request.method == 'POST':
-        form = PrescricaoForm(request.POST)
+        form = PrescricaoForm(request.POST, request.FILES)
         if form.is_valid():
             f = form.save(commit=False)
-            f.medico = Medico.objects.get(id=id_medico)
             f.save()
             form.save_m2m()
-            return redirect('precricao:list_prescricao')
+            return redirect('prescricao:list_prescricao')
     form = PrescricaoForm()
     context['form'] = form
     return render(request, template_name, context)
@@ -21,14 +20,25 @@ def add_prescricao(request, id_medico):
 def list_prescricao(request):
     template_name = 'prescricao/list_prescricao.html'
     prescricao = Prescricao.objects.filter()
-    medico = Medico.objects.filter()
     context = {
-        'prescricao': prescricao,
-        'medico': medico
+        'prescricao': prescricao
     }
     return render(request, template_name, context)
 
+def edit_prescricao(request, id_prescricao):
+    template_name = 'prescricao/add_prescricao.html'
+    context ={}
+    prescricao = get_object_or_404(prescricao, id=id_prescricao)
+    if request.method == 'POST':
+        form = PrescricaoForm(request.POST, request.FILES,  instance=prescricao)
+        if form.is_valid():
+            form.save()
+            return redirect('prescricao:list_prescricao')
+    form = PrescricaoForm(instance=prescricao)
+    context['form'] = form
+    return render(request, template_name, context)
+
 def delete_prescricao(request, id_prescricao):
-    prescricao = Prescricao.objects.get(id=id_prescricao)
+    prescricao = prescricao.objects.get(id=id_prescricao)
     prescricao.delete()
     return redirect('prescricao:list_prescricao')
