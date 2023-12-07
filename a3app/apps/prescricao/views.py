@@ -28,7 +28,7 @@ def list_prescricao(request):
 def edit_prescricao(request, id_prescricao):
     template_name = 'prescricao/add_prescricao.html'
     context ={}
-    prescricao = get_object_or_404(prescricao, id=id_prescricao)
+    prescricao = get_object_or_404(Prescricao, id=id_prescricao)
     if request.method == 'POST':
         form = PrescricaoForm(request.POST, request.FILES,  instance=prescricao)
         if form.is_valid():
@@ -39,6 +39,6 @@ def edit_prescricao(request, id_prescricao):
     return render(request, template_name, context)
 
 def delete_prescricao(request, id_prescricao):
-    prescricao = prescricao.objects.get(id=id_prescricao)
+    prescricao = Prescricao.objects.get(id=id_prescricao)
     prescricao.delete()
     return redirect('prescricao:list_prescricao')
