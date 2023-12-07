@@ -2,7 +2,7 @@
 
 {% block title %}
 
-    Lista de Pedidos - {{ block.super }}
+    Lista de Prescrições - {{ block.super }}
 
 {% endblock title %}
 
@@ -13,50 +13,33 @@
         <h5><b>Lista de Prescrições</b></h5>
         <div class="row">
             <div class ="col-md-12">
-            <br />
+                <br />
+                    <a href="{% url 'prescricao:add_prescricao' %}">Cadastro de nova prescrição</a>
+                <br />
+                <br />  
                 <table class="table table-hover">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Médico</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">Medicamentos</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for prescricao in prescricoes %}
+                    {% for prescricao in prescricao %}
                         <tr>
-                            <th scope="row">
-                                {% if prescricao.status == 'Finalizado' or prescricao.status == 'Cancelado' %}
-                                    <p style="color:darkgray;" >{{ prescricao.id }}</p>
-                                {% else %}
-                                    {{ prescricao.id }}
-                                {% endif %}
-                            </th>
+                            <th scope="row">{{ prescricao.id }}</th>
+                            <td>{{ prescricao.medico }}</td>
+                            <td>{{ prescricao.description }}</td>
+                            <td>{{ prescricao.medicamento }}</td>
                             <td>
-                                {% if prescricao.status == 'Finalizado' or prescricao.status == 'Cancelado' %}
-                                    <p style="color:darkgray;" >{{ prescricao.status }}</p>
-                                {% else %}
-                                    {{ prescricao.status }}
-                                {% endif %}
+                                <a href="{% url 'prescricao:edit_prescricao' prescricao.id %}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
-                            <td>
-                                {% for medico in medicos %}
-                                    {% if prescricao.medico_id == medico.id %}
-                                        {% if prescricao.status == 'Finalizado' or prescricao.status == 'Cancelado' %}
-                                            <p style="color:darkgray;" >{{ medico.first_name }} {{ medico.last_name }}</p>
-                                        {% else %}
-                                            {{ medico.first_name }} {{ medico.last_name }}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}   
-                            </td>
-                            <td>
-                                {% if prescricao.status == 'Finalizado' or prescricao.status == 'Cancelado' %}
-                                    <p style="color:darkgray;" >R$ {{ prescricao.total_price }}</p>
-                                {% else %}
-                                    R$ {{ prescricao.total_price }}
-                                {% endif %}
+                            <td>    
+                                <a href="{% url 'prescricao:delete_prescricao' prescricao.id %}" class="btn btn-danger btn-sm ">Excluir</a>
                             </td>
                         </tr> 
                     {% endfor %}
