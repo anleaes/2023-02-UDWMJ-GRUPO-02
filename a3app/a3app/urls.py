@@ -24,6 +24,7 @@ urlpatterns = [
     path('medico/', include('medico.urls', namespace = 'medico')),
     path('prescricao/', include('prescricao.urls', namespace='prescricao')),
     path('consulta/', include('consulta.urls', namespace='consulta')),
+    path('exame/', include('exame.urls', namespace='exame')),
     path('paciente/', include('paciente.urls', namespace='paciente')),
 ]
 
