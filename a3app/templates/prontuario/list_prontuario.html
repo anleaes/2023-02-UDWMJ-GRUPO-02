@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Prontuarios - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Prontuarios</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'prontuario:add_prontuario' %}">Novo Prontuario</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Exame</th>
+                    <th scope="col">Prescricao</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prontuario in prontuario %}
+                        <tr>
+                            <th scope="row">{{ prontuario.id }}</th>
+                            <td>{{ prontuario.paciente }}</td>
+                            <td>{{ prontuario.exame }}</td>
+                            <td>{{ prontuario.prescricao }}</td>
+                            <td>
+                                <img src="{{ prontuario.photo.url }}" width="50" height="50">
+                            </td>
+                            <td>
+                                <a href="{% url 'prontuario:edit_prontuario' prontuario.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>    
+                                <a href="{% url 'prontuario:delete_prontuario' prontuario.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

@@ -8,7 +8,7 @@ def add_prontuario(request):
     template_name = 'prontuario/add_prontuario.html'
     context = {}
     if request.method == 'POST':
-        form = Prontuario(request.POST, request.FILES)
+        form = ProntuarioForm(request.POST, request.FILES)
         if form.is_valid():
             f = form.save(commit=False)
             f.save()

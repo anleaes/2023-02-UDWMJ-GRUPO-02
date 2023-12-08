@@ -9,9 +9,9 @@ class Prontuario(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     photo = models.ImageField('Foto', upload_to='photos')
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    exame = models.ForeignKey(Exame, on_delete=models.CASCADE)
-    prescricao = models.ForeignKey(Prescricao, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, null=True)
+    exame = models.ForeignKey(Exame, on_delete=models.CASCADE, null=True)
+    prescricao = models.ForeignKey(Prescricao, on_delete=models.CASCADE, null=True)
     
     class Meta:
         verbose_name = 'Produto'
