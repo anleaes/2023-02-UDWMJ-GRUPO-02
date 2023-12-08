@@ -31,27 +31,12 @@
                     {% for exame in exame %}
                         <tr>
                             <th scope="row">{{ exame.id }}</th>
-                            <td>{{ exame.first_name }}</td>
-                            <td>{{ exame.last_name }}</td>
-                            <td>{{ exame.address }}</td>
-                            <td>{{ exame.cell_phone }}</td>
-                            <td>{{ exame.email }}</td>
-                            <td>{{ exame.gender }}</td>
-                            <td>
-                                {% for exame_socialnetwork in exame_socialnetworks %}
-                                    {% if exame_socialnetwork.exame_id == exame.id %}
-                                        <li>{{ exame_socialnetwork.socialnetwork }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
+                            <td>{{ exame.descricao }}</td>
                             <td>
                                 <a href="{% url 'exame:edit_exame' exame.id %}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
                             <td>
                                 <a href="{% url 'exame:delete_exame' exame.id %}" class="btn btn-danger btn-sm ">Excluir</a>
-                            </td>
-                            <td>   
-                                 <a href="{% url 'orders:add_order' exame.id %}" class="btn btn-danger btn-sm ">Pedir</a>
                             </td>
                         </tr> 
                     {% endfor %}
@@ -60,3 +45,4 @@
             </div>
         </div>
     </div>
+{% endblock body %}

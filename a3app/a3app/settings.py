@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'prescricao.apps.PrescricaoConfig',
     'consulta.apps.ConsultaConfig',
     
-    'exames.apps.ExamesConfig',
+    'exame.apps.ExameConfig',
 ]
 
 MIDDLEWARE = [

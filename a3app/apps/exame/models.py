@@ -4,7 +4,7 @@ from django.db import models
 class Exame(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    first_name = models.TextField('Descrição', max_length=200, default='')
+    descricao = models.TextField('Descrição', max_length=200, default='')
  
     class Meta:
         verbose_name = 'Exame'
@@ -12,4 +12,4 @@ class Exame(models.Model):
         ordering =['id']
 
     def __str__(self):
-        return self.first_name
+        return self.descricao
