@@ -18,7 +18,7 @@ class Paciente(models.Model):
     gender = models.CharField('Genero', max_length=1, choices=GENDER_CHOICES)
     condicao = models.TextField('Condição', max_length=200, default='-')
     idade = models.CharField('Idade', max_length=10)
-    CPF = models.IntegerField('CPF', max_length= 11)
+    CPF = models.IntegerField('CPF', default= '')
     
     class Meta:
         verbose_name = 'paciente'
