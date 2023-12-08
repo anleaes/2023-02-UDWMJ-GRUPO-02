@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PacienteForm
 from .models import Paciente
@@ -43,3 +42,13 @@ def delete_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
     paciente.delete()
     return redirect('paciente:list_paciente')
+
+#============= Buscar
+def search_paciente(request):
+    template_condicao = 'paciente/list_paciente.html'
+    query = request.GET.get('query')
+    paciente = Paciente.objects.filter(condicao__icontains=query)
+    context = {
+        'paciente': paciente,
+    }
+    return render(request,template_condicao, context)
