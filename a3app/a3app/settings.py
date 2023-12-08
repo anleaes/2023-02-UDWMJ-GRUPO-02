@@ -47,9 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'medico.apps.MedicoConfig',
     'prescricao.apps.PrescricaoConfig',
-    'consulta.apps.ConsultaConfig',
-    
-    'exame.apps.ExameConfig',
+    'consulta.apps.ConsultaConfig',  
+    'exames.apps.ExamesConfig',
+    'paciente.apps.PacienteConfig',
 ]
 
 MIDDLEWARE = [
