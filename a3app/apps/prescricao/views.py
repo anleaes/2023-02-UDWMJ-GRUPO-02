@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PrescricaoForm
 from .models import Prescricao
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/contas/login/')
 def add_prescricao(request):
     template_name = 'prescricao/add_prescricao.html'
     context = {}
@@ -17,6 +19,7 @@ def add_prescricao(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_prescricao(request):
     template_name = 'prescricao/list_prescricao.html'
     prescricao = Prescricao.objects.filter()
@@ -25,6 +28,7 @@ def list_prescricao(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_prescricao(request, id_prescricao):
     template_name = 'prescricao/add_prescricao.html'
     context ={}
@@ -38,6 +42,7 @@ def edit_prescricao(request, id_prescricao):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_prescricao(request, id_prescricao):
     prescricao = Prescricao.objects.get(id=id_prescricao)
     prescricao.delete()

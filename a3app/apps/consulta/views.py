@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ConsultaForm
 from .models import Consulta
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_consulta(request):
     template_name = 'consulta/add_consulta.html'
     context = {}
@@ -18,6 +20,7 @@ def add_consulta(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_consulta(request):
     template_name = 'consulta/list_consulta.html'
     consultas = Consulta.objects.filter()
@@ -26,6 +29,7 @@ def list_consulta(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_consulta(request, id_consulta):
     template_name = 'consulta/add_consulta.html'
     context ={}
@@ -39,6 +43,7 @@ def edit_consulta(request, id_consulta):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_consulta(request, id_consulta):
     consulta = Consulta.objects.get(id=id_consulta)
     consulta.delete()

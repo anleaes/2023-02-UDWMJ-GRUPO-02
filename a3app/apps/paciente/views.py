@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import PacienteForm
 from .models import Paciente
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_paciente(request):
     template_name = 'paciente/add_paciente.html'
     context = {}
@@ -17,6 +20,7 @@ def add_paciente(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_paciente(request):
     template_name = 'paciente/list_paciente.html'
     paciente = Paciente.objects.filter()
@@ -25,6 +29,7 @@ def list_paciente(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_paciente(request, id_paciente):
     template_name = 'paciente/add_paciente.html'
     context ={}
@@ -38,6 +43,7 @@ def edit_paciente(request, id_paciente):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_paciente(request, id_paciente):
     paciente = Paciente.objects.get(id=id_paciente)
     paciente.delete()
