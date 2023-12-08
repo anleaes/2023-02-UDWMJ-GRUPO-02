@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'consulta.apps.ConsultaConfig',  
     'exame.apps.ExameConfig',
     'paciente.apps.PacienteConfig',
-    'atendimento.apps.atendimentoConfig',
+    'atendimento.apps.AtendimentoConfig',
 ]
 
 MIDDLEWARE = [
