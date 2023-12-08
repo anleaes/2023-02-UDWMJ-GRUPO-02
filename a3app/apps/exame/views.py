@@ -28,7 +28,7 @@ def list_exame(request):
 def edit_exame(request, id_exame):
     template_name = 'exame/add_exame.html'
     context ={}
-    exame = get_object_or_404(exame, id=id_exame)
+    exame = get_object_or_404(Exame, id=id_exame)
     if request.method == 'POST':
         form = ExameForm(request.POST, instance=exame)
         if form.is_valid():
