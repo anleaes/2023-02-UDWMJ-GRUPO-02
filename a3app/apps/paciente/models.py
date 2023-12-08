@@ -9,7 +9,7 @@ class Paciente(models.Model):
     last_name = models.CharField('Sobrenome', max_length=100) 
     address = models.CharField('Endereco', max_length=200)   
     cell_phone = models.CharField('Telefone celular', max_length=20)
-    email = models.EmailField('E-mail',null=False, blank=False)
+    email = models.EmailField('E-mail',null=False)
     GENDER_CHOICES = (
         ('M', 'Masculino'),
         ('F', 'Feminino'),
@@ -18,7 +18,7 @@ class Paciente(models.Model):
     gender = models.CharField('Genero', max_length=1, choices=GENDER_CHOICES)
     condicao = models.TextField('Condição', max_length=200, default='-')
     idade = models.CharField('Idade', max_length=10)
-    CPF = models.IntegerField('CPF', default= '')
+    CPF = models.CharField('CPF', max_length= 100)
     
     class Meta:
         verbose_name = 'paciente'
