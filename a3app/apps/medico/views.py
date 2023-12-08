@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import MedicoForm
 from .models import Medico
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required(login_url='/contas/login/')
 def add_medico(request):
     template_name = 'medico/add_medico.html'
     context = {}
@@ -18,6 +20,7 @@ def add_medico(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_medicos(request):
     template_name = 'medico/list_medico.html'
     medicos = Medico.objects.filter()
@@ -26,6 +29,7 @@ def list_medicos(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_medicos(request, id_medico):
     template_name = 'medico/add_medico.html'
     context ={}
@@ -39,6 +43,7 @@ def edit_medicos(request, id_medico):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_medico(request, id_medico):
     medico = Medico.objects.get(id=id_medico)
     medico.delete()

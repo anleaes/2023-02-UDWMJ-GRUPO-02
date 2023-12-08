@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProntuarioForm
 from .models import Prontuario
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='/contas/login/')
 def add_prontuario(request):
     template_name = 'prontuario/add_prontuario.html'
     context = {}
@@ -18,6 +20,7 @@ def add_prontuario(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_prontuario(request):
     template_name = 'prontuario/list_prontuario.html'
     prontuario = Prontuario.objects.filter()
@@ -26,6 +29,7 @@ def list_prontuario(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_prontuario(request, id_prontuario):
     template_name = 'prontuario/add_prontuario.html'
     context ={}
@@ -39,6 +43,7 @@ def edit_prontuario(request, id_prontuario):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_prontuario(request, id_prontuario):
     prontuario = Prontuario.objects.get(id=id_prontuario)
     prontuario.delete()
