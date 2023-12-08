@@ -18,7 +18,7 @@ def add_paciente(request):
     context['form'] = form
     return render(request, template_name, context)
 
-def list_pacientes(request):
+def list_paciente(request):
     template_name = 'paciente/list_paciente.html'
     paciente = Paciente.objects.filter()
     context = {
@@ -29,7 +29,7 @@ def list_pacientes(request):
 def edit_paciente(request, id_paciente):
     template_name = 'paciente/add_paciente.html'
     context ={}
-    paciente = get_object_or_404(paciente, id=id_paciente)
+    paciente = get_object_or_404(Paciente, id=id_paciente)
     if request.method == 'POST':
         form = PacienteForm(request.POST, instance=paciente)
         if form.is_valid():
@@ -40,6 +40,6 @@ def edit_paciente(request, id_paciente):
     return render(request, template_name, context)
 
 def delete_paciente(request, id_paciente):
-    paciente = paciente.objects.get(id=id_paciente)
+    paciente = Paciente.objects.get(id=id_paciente)
     paciente.delete()
     return redirect('paciente:list_paciente')

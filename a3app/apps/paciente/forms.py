@@ -5,4 +5,4 @@ class PacienteForm(forms.ModelForm):
 
     class Meta:
         model = Paciente
-        exclude = ('created_on' , 'updated_on', 'CPF')
+        exclude = ('created_on' , 'updated_on')
