@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Exames - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Exames</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'exame:add_exame' %}">Novo exame</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for exame in exame %}
+                        <tr>
+                            <th scope="row">{{ exame.id }}</th>
+                            <td>{{ exame.first_name }}</td>
+                            <td>{{ exame.last_name }}</td>
+                            <td>{{ exame.address }}</td>
+                            <td>{{ exame.cell_phone }}</td>
+                            <td>{{ exame.email }}</td>
+                            <td>{{ exame.gender }}</td>
+                            <td>
+                                {% for exame_socialnetwork in exame_socialnetworks %}
+                                    {% if exame_socialnetwork.exame_id == exame.id %}
+                                        <li>{{ exame_socialnetwork.socialnetwork }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{% url 'exame:edit_exame' exame.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'exame:delete_exame' exame.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                            <td>   
+                                 <a href="{% url 'orders:add_order' exame.id %}" class="btn btn-danger btn-sm ">Pedir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
