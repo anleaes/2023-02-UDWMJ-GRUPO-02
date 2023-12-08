@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'medico.apps.MedicoConfig',
     'prescricao.apps.PrescricaoConfig',
     'consulta.apps.ConsultaConfig',  
-    'exames.apps.ExamesConfig',
+    'exame.apps.ExameConfig',
     'paciente.apps.PacienteConfig',
 ]
 
